@@ -11,6 +11,23 @@ function append(value) {
     document.getElementById("result").innerText = "0";
     isCalculated = false;
   }
+  
+  let lastChar = expression.slice(-1);
+
+
+  if ("+-*/".includes(value)) {
+
+
+    if (expression === "") return;
+
+  
+    if ("+-*/".includes(lastChar)) {
+      expression = expression.slice(0, -1) + value;
+      updateDisplay();
+      return;
+    }
+  }
+
   expression += value;
   updateDisplay();
 }
