@@ -68,13 +68,27 @@ function calculate() {
 }
 
 
-document.addEventListener("keydown", function (e) {
+document.addEventListener("keydown", function (e,value) {
 
   const key = e.key;
+   if ("+-*/".includes(value)) {
+
+
+    if (expression === "") return;
+
+
+    if ("+-*/".includes(lastChar)) {
+      expression = expression.slice(0, -1) + value;
+      updateDisplay();
+      return;
+    }
+  }
+
   //  for number
   if (!isNaN(key)) {
     append(key);
   }
+
   //operators
   if (["+", "-", "*", "/", "."].includes(key)) {
     append(key);
